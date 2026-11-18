@@ -1,0 +1,1908 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="artifact-type" content="narrative">
+  <meta name="design-style" content="sticker">
+  <title>Google Notebook 50분 초등 교사 연수 — 우리 반 맞춤 AI 조교부터 3분 웹앱까지</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..800;1,9..40,400..800&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+
+      /* Page and surfaces — Warm Classroom Storybook */
+      --background: #FFFBF2;
+      --surface-container-low: #FFFFFF;
+      --surface-container: #FFF6D6;
+      --surface-container-high: #FFEAA7;
+      --surface-tint-mint: #E6FAF5;
+      --surface-tint-coral: #FFF0EB;
+      --surface-tint-lavender: #F3EEFF;
+
+      /* Ink */
+      --on-surface: #232129;
+      --on-surface-variant: #575260;
+
+      /* Rules */
+      --outline: #C8BCAC;
+      --outline-variant: #ECE3D5;
+
+      /* Accents — Coral Orange, Emerald Mint, Pastel Yellow */
+      --primary: #D94826;
+      --on-primary: #FFFFFF;
+      --primary-container: #FFE4DC;
+      --on-primary-container: #6E1D09;
+      --secondary: #0F766E;
+      --on-secondary: #FFFFFF;
+      --secondary-container: #D1FAE5;
+      --on-secondary-container: #064E3B;
+      --tertiary: #F59E0B;
+      --tertiary-container: #FEF3C7;
+      --on-tertiary-container: #78350F;
+      --error: #C53030;
+      --on-error: #FFFFFF;
+
+      /* Data & diagram series */
+      --data-1: #D94826;
+      --data-2: #0F766E;
+      --data-3: #F59E0B;
+      --data-4: #6D28D9;
+      --data-context: #CBC1B3;
+
+      /* Semantic */
+      --positive: #0F766E;
+      --warning: #B45309;
+      --focus: #D94826;
+
+      /* Fonts */
+      --font-headline: 'Noto Sans KR', 'DM Sans', sans-serif;
+      --font-body: 'Noto Sans KR', 'DM Sans', sans-serif;
+      --font-label: 'Noto Sans KR', 'DM Sans', sans-serif;
+
+      /* Type Scale */
+      --display-size: clamp(1.85rem, 1.35rem + 1.8vw, 2.85rem);
+      --headline-size: clamp(1.35rem, 1.1rem + 0.9vw, 1.95rem);
+      --subhead-size: clamp(1.05rem, 0.96rem + 0.35vw, 1.25rem);
+      --body-size: clamp(0.95rem, 0.9rem + 0.2vw, 1.0625rem);
+      --label-size: clamp(0.75rem, 0.72rem + 0.1vw, 0.8125rem);
+
+      /* Shape */
+      --rounded: 1.35rem;
+      --rounded-lg: 2rem;
+      --rounded-full: 9999px;
+
+      /* Tinted Shadows (Sticker style) */
+      --shadow-coral: 0 8px 24px rgb(217 72 38 / 0.14);
+      --shadow-coral-deep: 0 12px 30px rgb(217 72 38 / 0.26);
+      --shadow-mint: 0 8px 24px rgb(15 118 110 / 0.14);
+      --shadow-yellow: 0 8px 24px rgb(245 158 11 / 0.18);
+      --shadow-soft: 0 14px 40px rgb(35 33 41 / 0.08);
+      --pop-scale: scale(1.03);
+      --lift: translateY(-4px);
+
+      /* Spacing scale */
+      --space-xs: 0.25rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.25rem;
+      --space-2xl: 3.5rem;
+      --radius-sm: 0.6rem;
+      --radius-md: 0.9rem;
+      --dot-gap: 6px;
+      --dot-size: 14px;
+      --dot-active-w: 32px;
+      --cite-size: 26px;
+      --step-size: 34px;
+      --progress-h: 8px;
+      --border-w: 2px;
+      --focus-w: 3px;
+      --outline-offset: 2px;
+      --chip-pad: 0.45rem 0.95rem;
+      --min-touch: 44px;
+      --min-slide-h: 440px;
+      --min-slide-mobile-h: 460px;
+      --min-drive-w: 240px;
+      --min-feedback-h: 24px;
+      --max-shell-w: 1220px;
+
+      /* Color tokens for SVG illustration */
+      --svg-desk-bg: #115E59;
+      --svg-outline: var(--primary);
+      --svg-paper: var(--surface-container-low);
+      --svg-cream: var(--surface-container);
+      --svg-mint-deep: var(--secondary);
+      --svg-mint-soft: var(--secondary-container);
+      --svg-mint-ink: var(--on-secondary-container);
+      --svg-coral-soft: var(--primary-container);
+      --svg-coral-ink: var(--on-primary-container);
+      --svg-yellow-soft: var(--tertiary-container);
+      --svg-yellow-ink: var(--on-tertiary-container);
+      --svg-amber: var(--tertiary);
+      --svg-purple: var(--data-4);
+
+      /* Motion */
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+      --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --dur-micro: 120ms;
+      --dur-short: 220ms;
+      --dur-long: 380ms;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body {
+      overflow-x: clip;
+      margin: 0;
+      padding: 0;
+      background-color: var(--background);
+      color: var(--on-surface);
+      font-family: var(--font-body);
+      font-size: var(--body-size);
+      line-height: 1.55;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    header { position: static; }
+
+    button, input, select, textarea {
+      font-family: inherit;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    button:focus-visible, input:focus-visible, [tabindex]:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    .deck-shell {
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: var(--space-md) var(--space-lg) var(--space-xl);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    .deck-shell * { min-width: 0; }
+
+    /* Top Classroom Header Bar (static) */
+    .top-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+      background: var(--surface-container-low);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-sm) var(--space-lg);
+      box-shadow: var(--shadow-yellow);
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+    }
+
+    .pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      border-radius: var(--rounded-full);
+      padding: var(--space-xs) var(--space-md);
+      font-size: var(--label-size);
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .pill-coral {
+      background: var(--primary-container);
+      color: var(--on-primary-container);
+    }
+    .pill-mint {
+      background: var(--secondary-container);
+      color: var(--on-secondary-container);
+    }
+    .pill-yellow {
+      background: var(--tertiary-container);
+      color: var(--on-tertiary-container);
+    }
+
+    .top-title {
+      font-weight: 900;
+      font-size: var(--subhead-size);
+      color: var(--on-surface);
+      margin: 0;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-xs);
+      border: none;
+      border-radius: var(--rounded-full);
+      padding: var(--space-sm) var(--space-lg);
+      font-size: var(--label-size);
+      font-weight: 700;
+      cursor: pointer;
+      min-height: 44px;
+      transition: transform var(--dur-short) var(--ease-bounce),
+                  box-shadow var(--dur-short) var(--ease-out),
+                  background-color var(--dur-micro) var(--ease-out);
+    }
+    .btn:hover { transform: var(--pop-scale); }
+    .btn:active { transform: scale(0.97); }
+    .btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: var(--on-primary);
+      box-shadow: var(--shadow-coral);
+    }
+    .btn-primary:hover { box-shadow: var(--shadow-coral-deep); }
+
+    .btn-secondary {
+      background: var(--secondary);
+      color: var(--on-secondary);
+      box-shadow: var(--shadow-mint);
+    }
+
+    .btn-soft {
+      background: var(--surface-container);
+      color: var(--on-surface);
+    }
+    .btn-soft:hover { background: var(--surface-container-high); }
+
+    .btn-copied {
+      background: var(--secondary) !important;
+      color: var(--on-secondary) !important;
+    }
+
+    /* Quick Chapter Pills */
+    .chapter-strip {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .chapter-chip {
+      border: 2px solid var(--outline-variant);
+      background: var(--surface-container-low);
+      color: var(--on-surface-variant);
+      border-radius: var(--rounded-full);
+      padding: 0.45rem 0.95rem;
+      font-size: var(--label-size);
+      font-weight: 700;
+      cursor: pointer;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      transition: transform var(--dur-short) var(--ease-bounce),
+                  background-color var(--dur-short) var(--ease-out),
+                  color var(--dur-short) var(--ease-out),
+                  box-shadow var(--dur-short) var(--ease-out);
+    }
+    .chapter-chip:hover {
+      transform: var(--pop-scale);
+      background: var(--surface-container);
+      color: var(--on-surface);
+    }
+    .chapter-chip.active {
+      background: var(--primary);
+      color: var(--on-primary);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-coral);
+    }
+
+    /* 16:9 Presentation Stage */
+    .stage-wrapper {
+      width: 100%;
+    }
+
+    .slide-card {
+      display: none;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: var(--surface-container-low);
+      border-radius: var(--rounded-lg);
+      box-shadow: var(--shadow-soft), var(--shadow-coral);
+      padding: var(--space-xl);
+      flex-direction: column;
+      justify-content: space-between;
+      gap: var(--space-md);
+      position: relative;
+      overflow-y: auto;
+      animation: slideEnter var(--dur-long) var(--ease-out);
+    }
+    .slide-card.active {
+      display: flex;
+    }
+
+    /* Overview mode shows all slides stacked cleanly */
+    .deck-shell.overview-mode .slide-card {
+      display: flex;
+      aspect-ratio: auto;
+      min-height: 440px;
+      margin-bottom: var(--space-xl);
+    }
+    .deck-shell.overview-mode .nav-dock {
+      display: none;
+    }
+
+    @keyframes slideEnter {
+      from { opacity: 0; transform: translateY(10px) scale(0.99); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* Slide Header inside 16:9 canvas */
+    .slide-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-md);
+      flex-wrap: wrap;
+    }
+
+    .slide-title-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+
+    .slide-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      font-size: var(--label-size);
+      font-weight: 700;
+      color: var(--secondary);
+    }
+
+    .slide-h1 {
+      font-family: var(--font-headline);
+      font-weight: 900;
+      font-size: var(--display-size);
+      line-height: 1.15;
+      margin: 0;
+      color: var(--on-surface);
+    }
+    .slide-h2 {
+      font-family: var(--font-headline);
+      font-weight: 900;
+      font-size: var(--headline-size);
+      line-height: 1.2;
+      margin: 0;
+      color: var(--on-surface);
+    }
+    .pop-coral { color: var(--primary); }
+    .pop-mint { color: var(--secondary); }
+
+    .slide-sub {
+      margin: 0;
+      color: var(--on-surface-variant);
+      font-size: var(--subhead-size);
+      font-weight: 500;
+      max-width: 65ch;
+    }
+
+    .slide-time-badge {
+      background: var(--surface-container);
+      color: var(--on-tertiary-container);
+      border-radius: var(--rounded-full);
+      padding: var(--space-xs) var(--space-md);
+      font-size: var(--label-size);
+      font-weight: 700;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* Slide Body Grids */
+    .slide-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: var(--space-md);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-lg);
+      align-items: stretch;
+    }
+    .grid-2-asym {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+      gap: var(--space-lg);
+      align-items: center;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-md);
+      align-items: stretch;
+    }
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-md);
+    }
+
+    /* Storybook Cards */
+    .story-card {
+      background: var(--surface-container-low);
+      border-radius: var(--rounded);
+      padding: var(--space-lg);
+      box-shadow: var(--shadow-coral);
+      border: 2px solid var(--outline-variant);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    .story-card.mint {
+      background: var(--surface-tint-mint);
+      border-color: var(--secondary-container);
+      box-shadow: var(--shadow-mint);
+    }
+    .story-card.yellow {
+      background: var(--surface-container);
+      border-color: var(--surface-container-high);
+      box-shadow: var(--shadow-yellow);
+    }
+    .story-card.coral {
+      background: var(--surface-tint-coral);
+      border-color: var(--primary-container);
+      box-shadow: var(--shadow-coral);
+    }
+    .story-card.lavender {
+      background: var(--surface-tint-lavender);
+      border-color: var(--outline-variant);
+      box-shadow: var(--shadow-mint);
+    }
+
+    .card-emoji {
+      font-size: 2.15rem;
+      line-height: 1;
+    }
+    .card-title {
+      font-weight: 900;
+      font-size: var(--subhead-size);
+      margin: 0;
+      color: var(--on-surface);
+    }
+    .card-desc {
+      margin: 0;
+      color: var(--on-surface-variant);
+      font-size: var(--body-size);
+    }
+
+    /* Step badges & flow arrows */
+    .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: var(--rounded-full);
+      background: var(--primary);
+      color: var(--on-primary);
+      font-weight: 900;
+      font-size: var(--body-size);
+      flex-shrink: 0;
+    }
+    .step-num.mint { background: var(--secondary); color: var(--on-secondary); }
+    .step-num.yellow { background: var(--tertiary-container); color: var(--on-tertiary-container); }
+
+    /* Prompt Copy Box */
+    .prompt-box {
+      background: var(--surface-container);
+      border: 2px dashed var(--tertiary);
+      border-radius: var(--rounded);
+      padding: var(--space-md) var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    .prompt-box.mint-box {
+      background: var(--surface-tint-mint);
+      border-color: var(--secondary);
+    }
+    .prompt-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+    }
+    .prompt-label {
+      font-size: var(--label-size);
+      font-weight: 700;
+      color: var(--on-tertiary-container);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+    .prompt-box.mint-box .prompt-label {
+      color: var(--on-secondary-container);
+    }
+    .prompt-text {
+      margin: 0;
+      font-size: var(--body-size);
+      font-weight: 500;
+      color: var(--on-surface);
+      background: var(--surface-container-low);
+      padding: var(--space-sm) var(--space-md);
+      border-radius: 0.9rem;
+      line-height: 1.5;
+    }
+
+    /* Interactive Drive Link Box (No outbound <a>) */
+    .drive-box {
+      background: var(--surface-tint-coral);
+      border: 2px solid var(--primary-container);
+      border-radius: var(--rounded);
+      padding: var(--space-md) var(--space-lg);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+      flex-wrap: wrap;
+    }
+    .drive-url-text {
+      font-family: monospace;
+      font-size: var(--label-size);
+      background: var(--surface-container-low);
+      padding: var(--space-xs) var(--space-sm);
+      border-radius: 0.6rem;
+      color: var(--on-surface);
+      word-break: break-all;
+      display: block;
+      margin-top: var(--space-xs);
+    }
+
+    /* Interactive Demo Controls & Tabs */
+    .tab-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+    .tab-btn {
+      border: 2px solid var(--outline-variant);
+      background: var(--surface-container-low);
+      color: var(--on-surface-variant);
+      border-radius: var(--rounded-full);
+      padding: var(--space-xs) var(--space-md);
+      min-height: 44px;
+      font-size: var(--label-size);
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform var(--dur-short) var(--ease-bounce),
+                  background-color var(--dur-short) var(--ease-out),
+                  color var(--dur-short) var(--ease-out);
+    }
+    .tab-btn:hover { transform: var(--pop-scale); }
+    .tab-btn.active {
+      background: var(--secondary);
+      color: var(--on-secondary);
+      border-color: var(--secondary);
+      box-shadow: var(--shadow-mint);
+    }
+
+    /* Interactive Citation Demo */
+    .cite-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: var(--rounded-full);
+      background: var(--primary);
+      color: var(--on-primary);
+      font-size: var(--label-size);
+      font-weight: 900;
+      border: none;
+      cursor: pointer;
+      vertical-align: middle;
+      margin: 0 2px;
+      transition: transform var(--dur-short) var(--ease-bounce);
+    }
+    .cite-chip:hover { transform: scale(1.15); }
+
+    /* Mini Quiz Option Buttons */
+    .quiz-opt {
+      width: 100%;
+      text-align: left;
+      background: var(--surface-container-low);
+      border: 2px solid var(--outline-variant);
+      border-radius: var(--rounded);
+      padding: var(--space-sm) var(--space-md);
+      min-height: 44px;
+      font-size: var(--body-size);
+      font-weight: 700;
+      color: var(--on-surface);
+      cursor: pointer;
+      transition: transform var(--dur-micro) var(--ease-bounce),
+                  background-color var(--dur-micro) var(--ease-out);
+    }
+    .quiz-opt:hover {
+      background: var(--surface-container);
+      transform: translateX(4px);
+    }
+    .quiz-opt.correct {
+      background: var(--secondary-container);
+      border-color: var(--secondary);
+      color: var(--on-secondary-container);
+    }
+    .quiz-opt.wrong {
+      background: var(--primary-container);
+      border-color: var(--error);
+      color: var(--on-primary-container);
+    }
+
+    /* Checklist */
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      background: var(--surface-container-low);
+      border: 2px solid var(--outline-variant);
+      border-radius: var(--rounded);
+      padding: var(--space-sm) var(--space-md);
+      cursor: pointer;
+      min-height: 44px;
+      text-align: left;
+      width: 100%;
+      font-size: var(--body-size);
+      font-weight: 700;
+      color: var(--on-surface);
+      transition: background-color var(--dur-short) var(--ease-out);
+    }
+    .check-item.done {
+      background: var(--secondary-container);
+      border-color: var(--secondary);
+      color: var(--on-secondary-container);
+    }
+
+    /* Bottom Navigation Dock */
+    .nav-dock {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+      background: var(--surface-container-low);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-sm) var(--space-lg);
+      box-shadow: var(--shadow-mint);
+      flex-wrap: wrap;
+    }
+
+    .dot-track {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .slide-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: var(--rounded-full);
+      border: none;
+      background: var(--outline-variant);
+      cursor: pointer;
+      padding: 0;
+      transition: transform var(--dur-short) var(--ease-bounce),
+                  background-color var(--dur-short) var(--ease-out),
+                  width var(--dur-short) var(--ease-out);
+    }
+    .slide-dot:hover { transform: scale(1.25); }
+    .slide-dot.active {
+      width: 32px;
+      background: var(--primary);
+    }
+
+    .progress-bar-wrap {
+      width: 100%;
+      height: 8px;
+      background: var(--surface-container);
+      border-radius: var(--rounded-full);
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: var(--secondary);
+      border-radius: var(--rounded-full);
+      transition: width var(--dur-short) var(--ease-out);
+    }
+
+    /* Inline Copy Toast */
+    .copy-toast {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-xs);
+      background: var(--secondary);
+      color: var(--on-secondary);
+      padding: var(--space-xs) var(--space-lg);
+      border-radius: var(--rounded-full);
+      font-size: var(--label-size);
+      font-weight: 700;
+      margin: 0 auto;
+      box-shadow: var(--shadow-mint);
+    }
+    .copy-toast.show { display: inline-flex; }
+
+    /* Mobile / Narrow Responsive */
+    @media (max-width: 768px) {
+      .slide-card {
+        aspect-ratio: auto;
+        min-height: 460px;
+        padding: var(--space-lg);
+      }
+      .grid-2, .grid-2-asym, .grid-3, .grid-4 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .deck-shell { padding: var(--space-sm); }
+      .top-bar, .nav-dock { padding: var(--space-sm) var(--space-md); }
+      .slide-card { padding: var(--space-md); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="deck-shell" id="deck-shell">
+    <!-- Static Top Classroom Header -->
+    <header class="top-bar">
+      <div class="brand-group">
+        <span class="pill-badge pill-coral">🏫 50분 초등 교사 연수</span>
+        <h1 class="top-title">Google Notebook × Gemini 교실 마법</h1>
+      </div>
+      <div class="top-actions">
+        <span class="pill-badge pill-yellow" id="slide-counter-badge">슬라이드 01 / 12</span>
+        <button type="button" class="btn btn-soft" id="btn-toggle-view" onclick="toggleOverviewMode()">📋 전체 한눈에 보기</button>
+      </div>
+    </header>
+
+    <!-- Progress bar & 5-Part Chapter Jump Strip -->
+    <div class="progress-bar-wrap" aria-hidden="true">
+      <div class="progress-bar-fill" id="deck-progress-fill" style="width: 8.33%;"></div>
+    </div>
+
+    <nav class="chapter-strip" aria-label="연수 단계 바로가기">
+      <button type="button" class="chapter-chip active" data-start="0" onclick="goToSlide(0)">1️⃣ 첫걸음 (0~8분)</button>
+      <button type="button" class="chapter-chip" data-start="2" onclick="goToSlide(2)">2️⃣ 기본 3단계 (8~18분)</button>
+      <button type="button" class="chapter-chip" data-start="4" onclick="goToSlide(4)">3️⃣ 수업 실전 (18~33분)</button>
+      <button type="button" class="chapter-chip" data-start="7" onclick="goToSlide(7)">4️⃣ 칼퇴 일상 (33~38분)</button>
+      <button type="button" class="chapter-chip" data-start="8" onclick="goToSlide(8)">5️⃣ 3분 웹앱 (38~50분)</button>
+    </nav>
+
+    <div class="copy-toast" id="copy-toast" role="status" aria-live="polite">✅ 클립보드에 복사되었습니다! 그대로 붙여넣어 보세요.</div>
+
+    <!-- 16:9 SLIDE STAGE -->
+    <main class="stage-wrapper" id="stage-wrapper">
+
+      <!-- SLIDE 1: 타이틀 & 50분 로드맵 -->
+      <section class="slide-card active" data-slide="0" aria-label="슬라이드 1">
+        <div class="slide-head">
+          <div class="slide-title-wrap">
+            <span class="slide-kicker">🌱 STEP 1 · Google Notebook 첫걸음</span>
+            <h2 class="slide-h1">선생님만을 위한 똑똑한 AI 조교,<br><span class="pop-coral">Google Notebook</span></h2>
+            <p class="slide-sub">디지털이 낯설어도 괜찮아요! 클릭 몇 번으로 수업 준비부터 우리 반 맞춤 웹앱까지 50분 만에 완성해 봐요.</p>
+          </div>
+          <span class="slide-time-badge">⏱️ 00 ~ 03분</span>
+        </div>
+
+        <div class="slide-body">
+          <div class="grid-2-asym">
+            <div class="grid-3">
+              <div class="story-card yellow">
+                <div class="card-emoji">📚</div>
+                <h3 class="card-title">내 자료만 읽어요</h3>
+                <p class="card-desc">교과서와 지도안만 쏙 골라 읽으니 거짓말(환각) 걱정이 없어요.</p>
+              </div>
+              <div class="story-card mint">
+                <div class="card-emoji">🎙️</div>
+                <h3 class="card-title">1분 수업 자료</h3>
+                <p class="card-desc">퀴즈, 팟캐스트, 인포그래픽이 버튼 한 번에 뚝딱 만들어져요.</p>
+              </div>
+              <div class="story-card coral">
+                <div class="card-emoji">🚀</div>
+                <h3 class="card-title">3분 맞춤 웹앱</h3>
+                <p class="card-desc">Gemini Canvas와 구글 사이트로 우리 반 전용 게임을 배포해요.</p>
+              </div>
+            </div>
+
+            <!-- Warm Classroom Storybook SVG Illustration -->
+            <div class="story-card" style="align-items: center; justify-content: center; text-align: center;">
+              <svg viewBox="0 0 320 190" width="100%" height="155" aria-hidden="true">
+                <rect x="10" y="14" width="300" height="162" rx="22" fill="var(--svg-cream)"/>
+                <rect x="28" y="30" width="170" height="108" rx="14" fill="var(--svg-mint-deep)"/>
+                <rect x="35" y="37" width="156" height="94" rx="10" fill="var(--svg-desk-bg)"/>
+                <text x="52" y="72" fill="var(--svg-yellow-soft)" font-size="15" font-weight="700">Google Notebook</text>
+                <text x="52" y="96" fill="var(--svg-mint-soft)" font-size="12">1. 자료 넣기  2. 질문하기</text>
+                <text x="52" y="116" fill="var(--svg-coral-soft)" font-size="12">3. 스튜디오에서 뚝딱!</text>
+                <rect x="214" y="48" width="78" height="96" rx="16" fill="var(--svg-paper)" stroke="var(--svg-outline)" stroke-width="3"/>
+                <circle cx="253" cy="78" r="16" fill="var(--svg-coral-soft)"/>
+                <text x="242" y="85" font-size="18">🤖</text>
+                <rect x="226" y="104" width="54" height="10" rx="5" fill="var(--svg-outline)"/>
+                <rect x="232" y="120" width="42" height="8" rx="4" fill="var(--svg-amber)"/>
+                <rect x="22" y="148" width="276" height="16" rx="8" fill="var(--svg-amber)" opacity="0.35"/>
+              </svg>
+              <span class="pill-badge pill-mint">💡 무료 계정으로도 모든 핵심 기능 사용 가능!</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 2: 왜 Google Notebook인가요? (비교 + 출처 시연 + 보안) -->
+      <section class="slide-card" data-slide="1" aria-label="슬라이드 2">
+        <div class="slide-head">
+          <div class="slide-title-wrap">
+            <span class="slide-kicker">🛡️ STEP 1 · 똑똑하고 안전한 이유</span>
+            <h2 class="slide-h2">일반 AI와 무엇이 다를까요? <span class="pop-coral">환각 ZERO &amp; 철통 보안</span></h2>
+          </div>
+          <span class="slide-time-badge">⏱️ 03 ~ 08분</span>
+        </div>
+
+        <div class="slide-body">
+          <div class="grid-2">
+            <!-- Comparison Cards -->
+            <div style="display: flex; flex-direction: column; gap: var(--space-md);">
+              <div class="story-card yellow">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <h3 class="card-title">🌐 일반 AI (ChatGPT · 일반 Gemini)</h3>
+                  <span class="pill-badge pill-yellow">백과사전형 비서</span>
+                </div>
+                <p class="card-desc">인터넷 전체에서 배운 내용을 바탕으로 답해요. 모르는 내용도 그럴듯하게 지어내는 <strong>할루시네이션(거짓말)</strong> 위험이 있어요.</p>
+              </div>
+              <div class="story-card mint">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <h3 class="card-title">📒 Google Notebook (NotebookLM)</h3>
+                  <span class="pill-badge pill-mint">내 자료 전문 조교</span>
+                </div>
+                <p class="card-desc"><strong>선생님이 올린 자료 안에서만</strong> 답을 찾아요! 자료에 없는 내용은 "자료에 없습니다"라고 솔직하게 말해요.</p>
+              </div>
+              <div class="story-card coral">
+                <h3 class="card-title">🔒 학생·학교 데이터 철저 보호</h3>
+                <p class="card-desc">업로드한 학교·학생 자료는 비공개로 유지되며, <strong>AI 모델 학습에 절대 사용되지 않아요!</strong> (단, 외부 링크 공개 공유 시에만 주의)</p>
+              </div>
+            </div>
+
+            <!-- Interactive Citation Preview -->
+            <div class="story-card" style="justify-content: space-between;">
+              <div>
+                <span class="pill-badge pill-coral">👆 출처 번호를 직접 눌러보세요!</span>
+                <h3 class="card-title" style="margin-top: var(--space-sm);">문장마다 근거 번호가 딱!</h3>
+                <p class="card-desc" style="margin-top: var(--space-xs);">답변 옆 동그란 번호를 누르면 교과서·지도안 원문의 어느 부분에서 가져왔는지 바로 보여줘요.</p>
+              </div>
+              <div class="prompt-box mint-box">
+                <span class="prompt-label">🤖 Google Notebook의 답변 예시</span>
+                <p class="prompt-text">
+                  전기를 안전하게 쓰려면 젖은 손으로 플러그를 만지지 않고
+                  <button type="button" class="cite-chip" onclick="showCitation(1)" aria-label="출처 1 보기">1</button>
+                  , 한 콘센트에 여러 기구를 문어발처럼 꽂지 않아야 해요
+                  <button type="button" class="cite-chip" onclick="showCitation(2)" aria-label="출처 2 보기">2</button>.
+                </p>
+              </div>
+              <div class="story-card yellow" id="citation-preview" style="padding: var(--space-md);">
+                <strong style="color: var(--on-tertiary-container);">📖 출처 [1] 원문 확인:</strong>
+                <span style="color: var(--on-surface);">6-2 과학 교과서 18쪽 — "물은 전기가 잘 통하므로 젖은 손으로 전기 기구를 만지면 감전 위험이 있습니다."</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 3: 기본 사용법 3단계 -->
+      <section class="slide-card" data-slide="2" aria-label="슬라이드 3">
+        <div class="slide-head">
+          <div class="slide-title-wrap">
+            <span class="slide-kicker">🪄 STEP 2 · 왕초보도 1분 완성</span>
+            <h2 class="slide-h2">딱 <span class="pop-coral">3단계</span>만 기억하세요!</h2>
+            <p class="slide-sub">노트북 만들기 전에 우측 상단 설정에서 출력 언어를 <strong>'한국어'</strong>로 맞추면 영어 자료도 한국어로 척척 바꿔줘요.</p>
+          </div>
+          <span class="slide-time-badge">⏱️ 08 ~ 13분</span>
+        </div>
+
+        <div class="slide-body">
+          <div class="grid-3">
+            <div class="story-card coral">
+              <div style="display: flex; align-items: center; gap: var(--space-sm);">
+                <span class="step-num">1</span>
+                <h3 class="card-title">파일 끌어놓기 (소스)</h3>
+              </div>
+              <div class="card-emoji">📂</div>
+              <p class="card-desc"><strong>왼쪽 화면</strong>에 내 자료를 쏙 넣어요! (무료 계정 1개 노트북당 최대 50개)</p>
+              <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto;">
+                <span class="pill-badge pill-yellow">PDF</span>
+                <span class="pill-badge pill-yellow">구글 드라이브</span>
+                <span class="pill-badge pill-yellow">유튜브 링크</span>
+                <span class="pill-badge pill-yellow">웹사이트</span>
+              </div>
+            </div>
+
+            <div class="story-card mint">
+              <div style="display: flex; align-items: center; gap: var(--space-sm);">
+                <span class="step-num mint">2</span>
+                <h3 class="card-title">궁금한 점 물어보기</h3>
+              </div>
+              <div class="card-emoji">💬</div>
+              <p class="card-desc"><strong>가운데 채팅창</strong>에서 우리 반 수준에 맞게 요약하거나 활동 아이디어를 물어요.</p>
+              <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto;">
+                <span class="pill-badge pill-mint">자동 요약</span>
+                <span class="pill-badge pill-mint">추천 질문 클릭</span>
+                <span class="pill-badge pill-mint">메모에 저장</span>
+              </div>
+            </div>
+
+            <div class="story-card yellow">
+              <div style="display: flex; align-items: center; gap: var(--space-sm);">
+                <span class="step-num yellow">3</span>
+                <h3 class="card-title">스튜디오에서 뚝딱!</h3>
+              </div>
+              <div class="card-emoji">🎨</div>
+              <p class="card-desc"><strong>오른쪽 스튜디오</strong>에서 버튼 한 번으로 수업용 콘텐츠를 바로 생성해요!</p>
+              <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto;">
+                <span class="pill-badge pill-coral">🎙️ 팟캐스트</span>
+                <span class="pill-badge pill-coral">❓ 퀴즈·카드</span>
+                <span class="pill-badge pill-coral">🖼️ 인포그래픽</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="prompt-box mint-box" style="flex-direction: row; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+            <span>💡 <strong>선생님 꿀팁:</strong> 왼쪽(자료) ➔ 가운데(질문·검증) ➔ 오른쪽(수업 자료 제작) 순서로 화면이 3단 구성되어 있어요!</span>
+            <span class="pill-badge pill-mint">저장된 메모는 계속 모아둘 수 있어요</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 4: 스튜디오 마법 체험관 -->
+      <section class="slide-card" data-slide="3" aria-label="슬라이드 4">
+        <div class="slide-head">
+          <div class="slide-title-wrap">
+            <span class="slide-kicker">🎧 STEP 2 · 스튜디오 핵심 기능 체험</span>
+            <h2 class="slide-h2">클릭 한 번에 쏟아지는 <span class="pop-mint">6가지 수업 선물</span></h2>
+          </div>
+          <span class="slide-time-badge">⏱️ 13 ~ 18분</span>
+        </div>
+
+        <div class="slide-body">
+          <div class="tab-row" role="tablist" aria-label="스튜디오 기능 체험">
+            <button type="button" class="tab-btn active" onclick="selectStudioTab('audio', this)">🎙️ 오디오 팟캐스트</button>
+            <button type="button" class="tab-btn" onclick="selectStudioTab('quiz', this)">❓ 플래시카드 &amp; 퀴즈</button>
+            <button type="button" class="tab-btn" onclick="selectStudioTab('info', this)">🖼️ 인포그래픽 &amp; 슬라이드</button>
+            <button type="button" class="tab-btn" onclick="selectStudioTab('mind', this)">🗺️ 마인드맵 &amp; 학습가이드</button>
+          </div>
+
+          <div id="studio-panel" class="story-card yellow" style="flex: 1; justify-content: center;">
+            <!-- Populated by JS on load & click, default HTML also present for instant render -->
+            <div class="grid-2-asym">
+              <div style="display: flex; flex-direction: column; gap: var(--space-sm);">
+                <span class="pill-badge pill-coral" style="width: fit-content;">🎙️ 오디오 오버뷰 (Audio Overview)</span>
+                <h3 class="card-title">두 명의 AI 진행자가 교과서를 라디오처럼 설명해 줘요!</h3>
+                <p class="card-desc">아이들 등하굣길 복습용으로 최고! 심지어 <strong>'참여하기(Interactive)'</strong>를 누르면 학생이 중간에 손을 들고 질문할 수도 있어요.</p>
+                <p class="card-desc">📥 점 세 개(⋮) 메뉴에서 <strong>음성 파일 다운로드</strong>도 가능해요.</p>
+              </div>
+              <div class="story-card" style="gap: var(--space-sm);">
+                <div style="display: flex; align-items: center; justify-content: space-between;">
+                  <strong>📻 미리 들어보기 대본</strong>
+                  <span class="pill-badge pill-mint">한국어 자연스러운 대화</span>
+                </div>
+                <p class="card-desc">👩 <strong>진행자 A:</strong> "오늘은 6학년 전기 단원을 파헤쳐 볼까요? 왜 젖은 손이 위험할까요?"</p>
+                <p class="card-desc">👨 <strong>진행자 B:</strong> "맞아요! 물에 섞인 성분 때문에 전기가 쌩하고 통하기 때문이죠!"</p>
+                <p class="card-desc" style="color: var(--primary); font-weight: 700;">🙋 <strong>우리 반 학생 (참여하기):</strong> "그럼 증류수는 전기가 안 통하나요?"</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 5: 현장 실습 준비 — 구글 드라이브 자료 가져오기 -->
+      <section class="slide-card" data-slide="4" aria-label="슬라이드 5">
+        <div class="slide-head">
+          <div class="slide-title-wrap">
+            <span class="slide-kicker">🎒 STEP 3 · 교육 현장 실전 실습</span>
+            <h2 class="slide-h2">실습 자료를 받아서 <span class="pop-coral">1분 만에</span> 만들어 봐요!</h2>
+            <p class="slide-sub">6-2 과학 〈전기의 이용〉과 5학년 사회 〈법의 역할〉 수업 자료가 준비되어 있어요.</p>
+          </div>
+          <span class="slide-time-badge">⏱️ 18 ~ 23분</span>
+        </div>
+
+        <div class="slide-body">
+          <div class="drive-box">
+            <div style="flex: 1; min-width: 240px;">
+              <strong style="font-size: var(--subhead-size); color: var(--on-primary-container);">📁 연수 실습용 구글 드라이브 폴더</strong>
+              <span class="drive-url-text" id="drive-url-display">https://drive.google.com/drive/folders/1s-LrSDMeG_qgtWvvJQcaCDf4B0akBYJ1?usp=drive_link</span>
+            </div>
+            <button type="button" class="btn btn-primary" id="btn-copy-drive" onclick="copyTextValue('https://drive.google.com/drive/folders/1s-LrSDMeG_qgtWvvJQcaCDf4B0akBYJ1?usp=drive_link', this)">📋 실습 폴더 주소 복사하기</button>
+          </div>
+
+          <div class="grid-4">
+            <div class="story-card yellow">
+              <div style="display: flex; align-items: center; gap: var(--space-sm);">
+                <span class="step-num yellow">1</span>
+                <h3 class="card-title">폴더에서 파일 내려받기</h3>
+              </div>
+              <p class="card-desc">위 주소를 새 브라우저 창에 붙여넣고 과학·사회 실습 PDF를 내 PC에 저장하세요.</p>
+            </div>
+            <div class="story-card mint">
+              <div style="display: flex; align-items: center; gap: var(--space-sm);">
+                <span class="step-num mint">2</span>
+                <h3 class="card-title">새 노트북 만들기</h3>
+              </div>
+              <p class="card-desc">Google Notebook 접속 후 <strong>[+ 새로 만들기]</strong>를 클릭하세요.</p>
+            </div>
+            <div class="story-card coral">
+              <div style="display: flex; align-items: center; gap: var(--space-sm);">
+                <span class="step-num">3</span>
+                <h3 class="card-title">PDF 끌어놓기</h3>
+              </div>
+              <p class="card-desc">받은 파일을 화면 가운데에 마우스로 끌어다 놓거나 [파일 업로드]를 누르세요.</p>
+            </div>
+            <div class="story-card">
+              <div style="display: flex; align-items: center; gap: var(--space-sm);">
+                <span class="step-num mint">4</span>
+                <h3 class="card-title">오른쪽 스튜디오 클릭!</h3>
+              </div>
+              <p class="card-desc">학습 가이드, 퀴즈, 팟캐스트, 인포그래픽 버튼을 눌러 1분 생성을 확인하세요.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 6: 실전 실습 ① — 6-2 과학 '전기의 이용' -->
+      <section class="slide-card" data-slide="5" aria-label="슬라이드 6">
+        <div class="slide-head">
+          <div class="slide-title-wrap">
+            <span class="slide-kicker">⚡ STEP 3 · 실전 실습 ①</span>
+            <h2 class="slide-h2">6-2 과학 <span class="pop-coral">〈전기의 이용〉</span> 1분 수업 패키지</h2>
+            <p class="slide-sub">어려운 회로 연결과 전기 안전 수칙! 자료만 넣으면 활동지부터 형성평가까지 끝나요.</p>
+          </div>
+          <span class="slide-time-badge">⏱️ 23 ~ 28분</span>
+        </div>
+
+        <div class="slide-body">
+          <div class="grid-3">
+            <div class="story-card yellow">
+              <div class="card-emoji">📝</div>
+              <h3 class="card-title">수준별 핵심 활동지</h3>
+              <p class="card-desc">직렬·병렬 연결의 차이를 초등학생 눈높이 표와 빈칸 채우기 문제로 뚝딱 만들어요.</p>
+            </div>
+            <div class="story-card mint">
+              <div class="card-emoji">🔌</div>
+              <h3 class="card-title">OX 안전 퀴즈 10문항</h3>
+              <p class="card-desc">스튜디오의 <strong>[퀴즈]</strong> 버튼으로 학생 태블릿에서 바로 푸는 10문제 테스트를 생성해요.</p>
+            </div>
+            <div class="story-card coral">
+              <div class="card-emoji">🗺️</div>
+              <h3 class="card-title">개념 연결 마인드맵</h3>
+              <p class="card-desc">전지, 전선, 전구, 스위치의 역할을 한눈에 보는 가지 그림으로 정리해요.</p>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="prompt-box">
+              <div class="prompt-top">
+                <span class="prompt-label">⚡ 과학 활동지 생성 프롬프트</span>
+                <button type="button" class="btn btn-primary" onclick="copyPromptById('p-sci-1', this)">📋 복사</button>
+              </div>
+              <p class="prompt-text" id="p-sci-1">업로드한 6학년 과학 '전기의 이용' 자료를 바탕으로, ① 전구의 직렬연결과 병렬연결 비교 표, ② 빈칸 채우기 5문제, ③ 생활 속 전기 안전 수칙 3가지를 초등학생이 이해하기 쉬운 따뜻한 말투로 활동지 형태로 만들어 줘.</p>
+            </div>
+
+            <div class="prompt-box mint-box">
+              <div class="prompt-top">
+                <span class="prompt-label">🎨 스튜디오 인포그래픽 편집 프롬프트</span>
+                <button type="button" class="btn btn-secondary" onclick="copyPromptById('p-sci-2', this)">📋 복사</button>
+              </div>
+              <p class="prompt-text" id="p-sci-2">6학년 초등학생을 위한 '전기의 안전한 이용과 절약' 인포그래픽을 만들어 줘. 흰색 바탕에 귀여운 일러스트 느낌으로, 젖은 손 금지·문어발 콘센트 금지·대기전력 차단 3가지 핵심만 크고 선명하게 강조해 줘.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 7: 실전 실습 ② — 5학년 사회 '법의 역할' -->
+      <section class="slide-card" data-slide="6" aria-label="슬라이드 7">
+        <div class="slide-head">
+          <div class="slide-title-wrap">
+            <span class="slide-kicker">⚖️ STEP 3 · 실전 실습 ②</span>
+            <h2 class="slide-h2">5학년 사회 <span class="pop-mint">〈법의 역할〉</span> 흥미 100% 수업</h2>
+            <p class="slide-sub">딱딱한 사회 개념도 팟캐스트와 웹툰 인포그래픽으로 바꾸면 아이들이 먼저 듣고 싶어해요!</p>
+          </div>
+          <span class="slide-time-badge">⏱️ 28 ~ 33분</span>
+        </div>
+
+        <div class="slide-body">
+          <div class="grid-2">
+            <div style="display: flex; flex-direction: column; gap: var(--space-md);">
+              <div class="story-card mint">
+                <h3 class="card-title">🎙️ 등하굣길 5분 복습 팟캐스트</h3>
+                <p class="card-desc">스튜디오에서 <strong>[오디오 오버뷰]</strong> 연필 아이콘(편집)을 눌러 "교실 규칙과 법의 차이를 재밌는 라디오처럼 설명해 줘"라고 주문해 보세요!</p>
+              </div>
+              <div class="story-card yellow">
+                <h3 class="card-title">🖼️ 웹툰 스타일 인포그래픽 꿀팁</h3>
+                <p class="card-desc">편집(✏️) 버튼에서 <strong>세로형/가로형</strong>, <strong>간결/표준</strong>, <strong>색상 테마</strong>를 고른 뒤 프롬프트를 넣으면 교실 게시판 포스터로 딱이에요!</p>
+              </div>
+              <div class="story-card coral">
+                <h3 class="card-title">🔗 학생 공유 시 꼭 알기!</h3>
+                <p class="card-desc">우측 상단 <strong>[공유]</strong>로 링크를 주면 학생은 퀴즈·팟캐스트를 볼 수 있어요. (단, 누가 풀었는지 자동 추적은 안 되니 소감 나누기로 확인해요!)</p>
+              </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: var(--space-md); justify-content: center;">
+              <div class="prompt-box mint-box">
+                <div class="prompt-top">
+                  <span class="prompt-label">⚖️ 역할놀이 수업 대본 프롬프트</span>
+                  <button type="button" class="btn btn-secondary" onclick="copyPromptById('p-soc-1', this)">📋 복사</button>
+                </div>
+                <p class="prompt-text" id="p-soc-1">첨부된 5학년 사회 '법의 역할' 자료를 근거로, 만약 우리 반에 '법이 하루 동안 사라진다면?'이라는 주제의 3분짜리 교실 상황극 대본을 4명의 등장인물(판사, 학생, 경찰, 상인)로 작성해 줘.</p>
+              </div>
+
+              <div class="prompt-box">
+                <div class="prompt-top">
+                  <span class="prompt-label">🖼️ 웹툰 인포그래픽 프롬프트</span>
+                  <button type="button" class="btn btn-primary" onclick="copyPromptById('p-soc-2', this)">📋 복사</button>
+                </div>
+                <p class="prompt-text" id="p-soc-2">한국 초등학생 캐릭터가 등장하는 밝은 웹툰 스타일로 '법이 우리를 보호해 주는 3가지 상황(학교 앞 횡단보도, 불량식품 단속, 저작권 보호)'을 한 장의 인포그래픽으로 정리해 줘.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 8: 선생님의 퇴근을 앞당기는 일상 활용 3가지 -->
+      <section class="slide-card" data-slide="7" aria-label="슬라이드 8">
+        <div class="slide-head">
+          <div class="slide-title-wrap">
+            <span class="slide-kicker">☕ STEP 4 · 워라밸 지켜주는 AI 비서</span>
+            <h2 class="slide-h2">선생님의 <span class="pop-coral">칼퇴와 방학</span>을 돕는 일상 활용 3가지</h2>
+          </div>
+          <span class="slide-time-badge">⏱️ 33 ~ 38분</span>
+        </div>
+
+        <div class="slide-body">
+          <div class="tab-row" role="tablist" aria-label="일상 활용 3가지 선택">
+            <button type="button" class="tab-btn active" onclick="selectLifeTab('travel', this)">✈️ ① 방학 여행 일정표</button>
+            <button type="button" class="tab-btn" onclick="selectLifeTab('book', this)">📖 ② 연수·독서 서평</button>
+            <button type="button" class="tab-btn" onclick="selectLifeTab('health', this)">🩺 ③ 건강검진 맞춤 분석</button>
+          </div>
+
+          <div id="life-panel" class="story-card coral" style="flex: 1; justify-content: center;">
+            <div class="grid-2-asym">
+              <div style="display: flex; flex-direction: column; gap: var(--space-sm);">
+                <span class="pill-badge pill-coral" style="width: fit-content;">✈️ 활용 ① · 방학 가족·우정 여행</span>
+                <h3 class="card-title">블로그·유튜브 링크만 모으면 동선 낭비 없는 일정표 완성!</h3>
+                <p class="card-desc">가고 싶은 식당, 숙소, 여행 유튜브 링크 5~6개를 소스로 넣으세요. 광고 없이 내가 고른 장소만으로 동선을 짜줘요.</p>
+              </div>
+              <div class="prompt-box">
+                <div class="prompt-top">
+                  <span class="prompt-label">📋 여행 일정표 프롬프트</span>
+                  <button type="button" class="btn btn-primary" onclick="copyTextValue(`올려놓은 블로그와 유튜브 소스를 바탕으로 3박 4일 가족 여행 일정표를 만들어 줘. 이동 거리가 겹치지 않게 오전·오후·저녁 표로 정리하고, 비 올 때 갈 수 있는 실내 대안 장소와 준비물 체크리스트도 추가해 줘.`, this)">📋 복사하기</button>
+                </div>
+                <p class="prompt-text">올려놓은 블로그와 유튜브 소스를 바탕으로 3박 4일 가족 여행 일정표를 만들어 줘. 이동 거리가 겹치지 않게 오전·오후·저녁 표로 정리하고, 비 올 때 갈 수 있는 실내 대안 장소와 준비물 체크리스트도 추가해 줘.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 9: Google Notebook × Gemini 연계 3분 웹앱 워크플로우 -->
+      <section class="slide-card" data-slide="8" aria-label="슬라이드 9">
+        <div class="slide-head">
+          <div class="slide-title-wrap">
+            <span class="slide-kicker">✨ STEP 5 · Google Notebook × Gemini 연계</span>
+            <h2 class="slide-h2">우리 반 맞춤 웹앱 <span class="pop-mint">3분 완성 워크플로우</span></h2>
+            <p class="slide-sub">코딩을 몰라도 괜찮아요! 정확한 자료는 Notebook이, 예쁜 앱 제작은 Gemini가, 공유는 구글 사이트가 맡아요.</p>
+          </div>
+          <span class="slide-time-badge">⏱️ 38 ~ 42분</span>
+        </div>
+
+        <div class="slide-body">
+          <div class="grid-3">
+            <div class="story-card yellow">
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                <span class="step-num yellow">1</span>
+                <span class="pill-badge pill-yellow">모으기 · 1분</span>
+              </div>
+              <div class="card-emoji">📒</div>
+              <h3 class="card-title">Google Notebook에서 자료 정리</h3>
+              <p class="card-desc">교과서·학습지를 모아 <strong>오류 없는 핵심 개념과 퀴즈 문항</strong>을 추출해 둡니다.</p>
+            </div>
+
+            <div class="story-card mint">
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                <span class="step-num mint">2</span>
+                <span class="pill-badge pill-mint">만들기 · 1분</span>
+              </div>
+              <div class="card-emoji">🪄</div>
+              <h3 class="card-title">Gemini Canvas로 웹앱 뚝딱!</h3>
+              <p class="card-desc">Gemini에서 <strong>Canvas</strong>를 켜고 Notebook 내용을 연결하거나 붙여넣어 <strong>퀴즈 웹앱·조작기</strong>를 생성합니다.</p>
+            </div>
+
+            <div class="story-card coral">
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                <span class="step-num">3</span>
+                <span class="pill-badge pill-coral">배포하기 · 1분</span>
+              </div>
+              <div class="card-emoji">🌐</div>
+              <h3 class="card-title">Google Sites에 붙여넣어 공유</h3>
+              <p class="card-desc">완성된 코드를 <strong>구글 사이트 [삽입 → 소스 코드]</strong>에 붙여넣고 학생들에게 <strong>링크 하나만</strong> 공유!</p>
+            </div>
+          </div>
+
+          <div class="prompt-box mint-box" style="flex-direction: row; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+            <span>🧩 <strong>왜 Google Sites에 올리나요?</strong> Gemini 공유 링크는 학생 로그인이 필요할 수 있지만, Google Sites에 HTML 코드를 넣으면 <strong>로그인 없이 링크 클릭 한 번</strong>으로 바로 열려요!</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 10: 실전 수업 적용 사례 3가지 + 미니 인터랙티브 체험 -->
+      <section class="slide-card" data-slide="9" aria-label="슬라이드 10">
+        <div class="slide-head">
+          <div class="slide-title-wrap">
+            <span class="slide-kicker">🎮 STEP 5 · 우리 반 실전 수업 사례</span>
+            <h2 class="slide-h2">이렇게 만든 웹앱, <span class="pop-coral">교실</span>에서 바로 써요!</h2>
+          </div>
+          <span class="slide-time-badge">⏱️ 42 ~ 46분</span>
+        </div>
+
+        <div class="slide-body">
+          <div class="grid-2-asym">
+            <div style="display: flex; flex-direction: column; gap: var(--space-sm);">
+              <div class="story-card yellow" style="padding: var(--space-md);">
+                <h3 class="card-title">⚡ 사례 ① 6-2 과학 〈전기의 이용〉 회로 조작기</h3>
+                <p class="card-desc">스위치를 누르면 직렬·병렬 전구의 밝기가 달라지는 눈으로 보는 시뮬레이션 웹앱!</p>
+              </div>
+              <div class="story-card mint" style="padding: var(--space-md);">
+                <h3 class="card-title">⚖️ 사례 ② 5학년 사회 〈법의 역할〉 판결 게임</h3>
+                <p class="card-desc">생활 속 사례 카드를 보고 어떤 법이 필요한지 맞히는 모둠 대항 판별 게임!</p>
+              </div>
+              <div class="story-card coral" style="padding: var(--space-md);">
+                <h3 class="card-title">🏆 사례 ③ 단원 마무리 〈학부모 참여형〉 퀴즈 앱</h3>
+                <p class="card-desc">큰 버튼과 칭찬 메시지가 나와서 집에서 부모님과 함께 복습하기 좋아요!</p>
+              </div>
+            </div>
+
+            <!-- Live Mini Classroom WebApp Demo -->
+            <div class="story-card" style="gap: var(--space-sm);">
+              <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px;">
+                <span class="pill-badge pill-mint">🎮 완성 웹앱 미리 체험하기</span>
+                <span class="pill-badge pill-yellow" id="demo-score-badge">점수: 0 / 2</span>
+              </div>
+              <h3 class="card-title" id="demo-q-title">Q1. [6-2 과학] 전구 두 개를 한 줄로 연결한 '직렬연결'에서 전구 하나를 빼면?</h3>
+              <div style="display: flex; flex-direction: column; gap: var(--space-xs);" id="demo-options">
+                <button type="button" class="quiz-opt" onclick="answerDemoQuiz(0, false, this)">① 나머지 전구가 더 밝아진다</button>
+                <button type="button" class="quiz-opt" onclick="answerDemoQuiz(0, true, this)">② 전기의 길이 끊어져 나머지 전구도 꺼진다</button>
+                <button type="button" class="quiz-opt" onclick="answerDemoQuiz(0, false, this)">③ 색깔이 변한다</button>
+              </div>
+              <div id="demo-feedback" class="card-desc" style="font-weight: 700; min-height: 24px;">👆 보기를 직접 눌러보세요!</div>
+              <button type="button" class="btn btn-soft" id="btn-next-demo-q" onclick="nextDemoQuiz()">다음 문제 (5학년 사회) ▶</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 11: 교실 즉시 적용 프롬프트 보물상자 (원클릭 복사) -->
+      <section class="slide-card" data-slide="10" aria-label="슬라이드 11">
+        <div class="slide-head">
+          <div class="slide-title-wrap">
+            <span class="slide-kicker">💎 STEP 5 · 원클릭 복사 보물상자</span>
+            <h2 class="slide-h2">복사해서 바로 쓰는 <span class="pop-mint">만능 교실 프롬프트</span></h2>
+          </div>
+          <span class="slide-time-badge">⏱️ 46 ~ 48분</span>
+        </div>
+
+        <div class="slide-body">
+          <div class="tab-row" role="tablist" aria-label="프롬프트 카테고리 필터">
+            <button type="button" class="tab-btn active" onclick="filterPrompts('all', this)">🌈 전체 보기</button>
+            <button type="button" class="tab-btn" onclick="filterPrompts('notebook', this)">📒 Google Notebook용</button>
+            <button type="button" class="tab-btn" onclick="filterPrompts('gemini', this)">🪄 Gemini Canvas 웹앱용</button>
+          </div>
+
+          <div class="grid-2" id="prompt-treasure-grid">
+            <div class="prompt-box" data-cat="notebook">
+              <div class="prompt-top">
+                <span class="prompt-label">📒 [Notebook] 학부모 안내 가정통신문</span>
+                <button type="button" class="btn btn-primary" onclick="copyPromptById('box-p1', this)">📋 복사</button>
+              </div>
+              <p class="prompt-text" id="box-p1">올린 단원 지도안과 교과서 내용을 바탕으로, 학부모님께 보낼 '이번 주 배울 내용과 가정 연계 지도 팁' 안내문을 다정하고 정중한 어조로 5줄 이내로 요약해 줘.</p>
+            </div>
+
+            <div class="prompt-box" data-cat="notebook">
+              <div class="prompt-top">
+                <span class="prompt-label">📒 [Notebook] 맞춤형 학습지 문항 추출</span>
+                <button type="button" class="btn btn-primary" onclick="copyPromptById('box-p2', this)">📋 복사</button>
+              </div>
+              <p class="prompt-text" id="box-p2">이 자료에서 초등학생이 가장 헷갈려 하는 핵심 개념 5가지를 뽑고, 객관식 3문제와 서술형 2문제를 정답 및 친절한 해설과 함께 표로 정리해 줘.</p>
+            </div>
+
+            <div class="prompt-box mint-box" data-cat="gemini">
+              <div class="prompt-top">
+                <span class="prompt-label">🪄 [Gemini Canvas] 퀴즈 웹앱 생성</span>
+                <button type="button" class="btn btn-secondary" onclick="copyPromptById('box-p3', this)">📋 복사</button>
+              </div>
+              <p class="prompt-text" id="box-p3">아래 정리된 핵심 개념과 5문제를 바탕으로, 초등학생이 태블릿으로 즐겁게 풀 수 있는 단일 HTML 파일 반응형 퀴즈 웹앱을 만들어 줘. 큰 버튼, 실시간 점수판, 마지막 격려 메시지까지 따뜻한 색감으로 넣어 줘.</p>
+            </div>
+
+            <div class="prompt-box mint-box" data-cat="gemini">
+              <div class="prompt-top">
+                <span class="prompt-label">🪄 [Gemini Canvas] 개념 조작 시뮬레이션</span>
+                <button type="button" class="btn btn-secondary" onclick="copyPromptById('box-p4', this)">📋 복사</button>
+              </div>
+              <p class="prompt-text" id="box-p4">초등 6학년 학생도 직관적으로 이해할 수 있는 '전구의 직렬연결과 병렬연결' 시뮬레이션 웹앱을 만들어 줘. 스위치를 클릭하면 전구에 불이 들어오고 전구 1개를 빼면 어떻게 되는지 눈으로 바로 보이게 해 줘.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 12: 연수 마무리 & 듀얼 브레인 체크리스트 -->
+      <section class="slide-card" data-slide="11" aria-label="슬라이드 12">
+        <div class="slide-head">
+          <div class="slide-title-wrap">
+            <span class="slide-kicker">🌟 STEP 5 · 연수 마무리 &amp; 실천 다짐</span>
+            <h2 class="slide-h2">오늘부터 나도 <span class="pop-coral">'듀얼 브레인'</span> 선생님!</h2>
+            <p class="slide-sub">선생님의 따뜻한 직관(뇌) + Google Notebook &amp; Gemini(AI의 뇌)가 만나면 교실이 달라져요.</p>
+          </div>
+          <span class="slide-time-badge">⏱️ 48 ~ 50분</span>
+        </div>
+
+        <div class="slide-body">
+          <div class="grid-2">
+            <div class="story-card yellow">
+              <h3 class="card-title">🧠 듀얼 브레인 교사의 4가지 약속</h3>
+              <p class="card-desc">1️⃣ <strong>모든 작은 일에 AI 초대하기:</strong> 막히면 일단 자료 넣고 물어봐요.</p>
+              <p class="card-desc">2️⃣ <strong>최종 결정권은 선생님 손에:</strong> 출처 확인 후 우리 반에 맞게 다듬어요.</p>
+              <p class="card-desc">3️⃣ <strong>역할과 눈높이 주기:</strong> "초등 5학년 담임처럼 말해줘"라고 부탁해요.</p>
+              <p class="card-desc">4️⃣ <strong>오늘 배운 것 1개만 내일 바로 써보기!</strong></p>
+            </div>
+
+            <div class="story-card mint">
+              <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px;">
+                <h3 class="card-title">✅ 오늘의 50분 연수 실습 체크리스트</h3>
+                <span class="pill-badge pill-mint" id="checklist-progress">0 / 5 완료</span>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: var(--space-xs);" id="checklist-items">
+                <button type="button" class="check-item" data-check="0" onclick="toggleChecklist(0)">⬜ 1. 구글 드라이브 실습 자료 주소 복사하기</button>
+                <button type="button" class="check-item" data-check="1" onclick="toggleChecklist(1)">⬜ 2. Google Notebook에 과학/사회 PDF 올리기</button>
+                <button type="button" class="check-item" data-check="2" onclick="toggleChecklist(2)">⬜ 3. 스튜디오에서 팟캐스트·퀴즈·인포그래픽 생성하기</button>
+                <button type="button" class="check-item" data-check="3" onclick="toggleChecklist(3)">⬜ 4. 칼퇴 일상 프롬프트 1개 복사해 보기</button>
+                <button type="button" class="check-item" data-check="4" onclick="toggleChecklist(4)">⬜ 5. Gemini Canvas → Google Sites 웹앱 배포 이해하기</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Bottom Slide Navigation Dock -->
+    <footer class="nav-dock">
+      <button type="button" class="btn btn-soft" id="btn-prev" onclick="prevSlide()">◀ 이전 슬라이드</button>
+      <div class="dot-track" id="dot-track" aria-label="슬라이드 번호 이동"></div>
+      <button type="button" class="btn btn-primary" id="btn-next" onclick="nextSlide()">다음 슬라이드 ▶</button>
+    </footer>
+  </div>
+
+  <api-shim></api-shim>
+  <script>
+    const TOTAL_SLIDES = 12;
+    let currentSlide = 0;
+    let isOverview = false;
+    let checklistState = [false, false, false, false, false];
+    let demoScore = 0;
+    let demoQuestionIdx = 0;
+    let demoAnswered = [false, false];
+
+    const DEMO_QUESTIONS = [
+      {
+        title: `Q1. [6-2 과학] 전구 두 개를 한 줄로 연결한 '직렬연결'에서 전구 하나를 빼면?`,
+        options: [
+          { text: `① 나머지 전구가 더 밝아진다`, correct: false },
+          { text: `② 전기의 길이 끊어져 나머지 전구도 꺼진다`, correct: true },
+          { text: `③ 색깔이 변한다`, correct: false }
+        ],
+        explain: `정답! 직렬연결은 전기가 흐르는 길이 하나뿐이라 하나가 빠지면 모두 꺼져요.`
+      },
+      {
+        title: `Q2. [5학년 사회] 학교 앞 어린이 보호 구역에서 속도를 제한하는 법의 역할은?`,
+        options: [
+          { text: `① 공동체의 안전과 질서를 지키고 권리를 보호한다`, correct: true },
+          { text: `② 자동차를 못 타게 막는다`, correct: false },
+          { text: `③ 벌금만 많이 걷기 위해서다`, correct: false }
+        ],
+        explain: `정답! 법은 서로의 권리를 보호하고 안전한 사회 질서를 유지해 줍니다.`
+      }
+    ];
+
+    const STUDIO_TABS = {
+      audio: `
+        <div class="grid-2-asym">
+          <div style="display: flex; flex-direction: column; gap: var(--space-sm);">
+            <span class="pill-badge pill-coral" style="width: fit-content;">🎙️ 오디오 오버뷰 (Audio Overview)</span>
+            <h3 class="card-title">두 명의 AI 진행자가 교과서를 라디오처럼 설명해 줘요!</h3>
+            <p class="card-desc">아이들 등하굣길 복습용으로 최고! 심지어 <strong>'참여하기(Interactive)'</strong>를 누르면 학생이 중간에 손을 들고 질문할 수도 있어요.</p>
+            <p class="card-desc">📥 점 세 개(⋮) 메뉴에서 <strong>음성 파일 다운로드</strong>도 가능해요.</p>
+          </div>
+          <div class="story-card" style="gap: var(--space-sm);">
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+              <strong>📻 미리 들어보기 대본</strong>
+              <span class="pill-badge pill-mint">한국어 자연스러운 대화</span>
+            </div>
+            <p class="card-desc">👩 <strong>진행자 A:</strong> "오늘은 6학년 전기 단원을 파헤쳐 볼까요? 왜 젖은 손이 위험할까요?"</p>
+            <p class="card-desc">👨 <strong>진행자 B:</strong> "맞아요! 물에 섞인 성분 때문에 전기가 쌩하고 통하기 때문이죠!"</p>
+            <p class="card-desc" style="color: var(--primary); font-weight: 700;">🙋 <strong>우리 반 학생 (참여하기):</strong> "그럼 증류수는 전기가 안 통하나요?"</p>
+          </div>
+        </div>
+      `,
+      quiz: `
+        <div class="grid-2-asym">
+          <div style="display: flex; flex-direction: column; gap: var(--space-sm);">
+            <span class="pill-badge pill-mint" style="width: fit-content;">❓ 플래시카드 &amp; 퀴즈 (Flashcards &amp; Quiz)</span>
+            <h3 class="card-title">복습용 단어 카드와 10문제 객관식이 바로!</h3>
+            <p class="card-desc">선생님이 일일이 문제를 타이핑하지 않아도 올린 학습지·교과서에서 핵심만 뽑아 객관식 퀴즈와 앞뒤 카드가 생성됩니다.</p>
+            <p class="card-desc">🔗 <strong>[공유]</strong> 링크를 주면 학생들도 태블릿에서 바로 풀어볼 수 있어요!</p>
+          </div>
+          <div class="story-card" style="gap: var(--space-sm);">
+            <strong>🃏 플래시카드 예시 (앞면 ➔ 뒷면)</strong>
+            <div class="story-card mint" style="padding: var(--space-md);">
+              <p class="card-desc"><strong>앞면:</strong> 전구 두 개를 각각 다른 길에 연결하여 하나가 꺼져도 다른 하나는 계속 켜지는 연결 방식은?</p>
+              <p class="card-desc" style="color: var(--secondary); font-weight: 900;">➔ 뒷면 정답: 병렬연결</p>
+            </div>
+          </div>
+        </div>
+      `,
+      info: `
+        <div class="grid-2-asym">
+          <div style="display: flex; flex-direction: column; gap: var(--space-sm);">
+            <span class="pill-badge pill-yellow" style="width: fit-content;">🖼️ 인포그래픽 &amp; 슬라이드 덱</span>
+            <h3 class="card-title">교실 환경판 포스터와 수업용 PPT 15장이 1분 만에!</h3>
+            <p class="card-desc">그냥 누르기보다 <strong>연필(✏️) 편집 버튼</strong>을 눌러 <strong>가로/세로, 간결/표준, 색상 테마</strong>를 고르면 훨씬 예쁘게 나와요.</p>
+            <p class="card-desc">📥 이미지나 PDF 슬라이드로 다운로드해 교실에서 바로 띄워보세요.</p>
+          </div>
+          <div class="story-card" style="gap: var(--space-sm);">
+            <strong>🎨 인포그래픽 주문 3종 옵션</strong>
+            <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+              <span class="pill-badge pill-coral">방향: 세로 포스터형</span>
+              <span class="pill-badge pill-mint">분량: 초등용 간결하게</span>
+              <span class="pill-badge pill-yellow">테마: 밝은 파스텔 톤</span>
+            </div>
+            <p class="card-desc">한글 글자 깨짐 없이 깔끔한 포스터로 완성되어 교실 뒤 게시판 자료로 활용하기 좋아요!</p>
+          </div>
+        </div>
+      `,
+      mind: `
+        <div class="grid-2-asym">
+          <div style="display: flex; flex-direction: column; gap: var(--space-sm);">
+            <span class="pill-badge pill-coral" style="width: fit-content;">🗺️ 마인드맵 &amp; 학습 가이드</span>
+            <h3 class="card-title">단원 전체 흐름을 한 장의 구조도로 쏙!</h3>
+            <p class="card-desc">여러 문서가 한꺼번에 들어있어도 공통 주제를 엮어 <strong>클릭 가능한 마인드맵</strong>과 <strong>학습 가이드(핵심 용어+서술형 질문)</strong>를 만들어 줍니다.</p>
+            <p class="card-desc">📋 [복사] 아이콘을 눌러 한글·구글 문서에 붙여넣으면 바로 인쇄용 학습지가 돼요.</p>
+          </div>
+          <div class="story-card" style="align-items: center;">
+            <svg viewBox="0 0 280 140" width="100%" height="125" aria-hidden="true">
+              <rect x="85" y="10" width="110" height="32" rx="16" fill="var(--svg-outline)"/>
+              <text x="140" y="31" text-anchor="middle" fill="var(--on-primary)" font-size="12" font-weight="700">6-2 전기의 이용</text>
+              <line x1="140" y1="42" x2="55" y2="85" stroke="var(--svg-mint-deep)" stroke-width="3"/>
+              <line x1="140" y1="42" x2="140" y2="85" stroke="var(--svg-amber)" stroke-width="3"/>
+              <line x1="140" y1="42" x2="225" y2="85" stroke="var(--svg-purple)" stroke-width="3"/>
+              <rect x="10" y="85" width="90" height="34" rx="14" fill="var(--svg-mint-soft)"/>
+              <text x="55" y="106" text-anchor="middle" fill="var(--svg-mint-ink)" font-size="11" font-weight="700">직렬·병렬</text>
+              <rect x="106" y="85" width="68" height="34" rx="14" fill="var(--svg-yellow-soft)"/>
+              <text x="140" y="106" text-anchor="middle" fill="var(--svg-yellow-ink)" font-size="11" font-weight="700">전자석</text>
+              <rect x="180" y="85" width="90" height="34" rx="14" fill="var(--svg-coral-soft)"/>
+              <text x="225" y="106" text-anchor="middle" fill="var(--svg-coral-ink)" font-size="11" font-weight="700">전기 안전</text>
+            </svg>
+          </div>
+        </div>
+      `
+    };
+
+    const LIFE_TABS = {
+      travel: {
+        badge: `✈️ 활용 ① · 방학 가족·우정 여행`,
+        title: `블로그·유튜브 링크만 모으면 동선 낭비 없는 일정표 완성!`,
+        desc: `가고 싶은 식당, 숙소, 여행 유튜브 링크 5~6개를 소스로 넣으세요. 광고 없이 내가 고른 장소만으로 동선을 짜줘요.`,
+        label: `📋 여행 일정표 프롬프트`,
+        prompt: `올려놓은 블로그와 유튜브 소스를 바탕으로 3박 4일 가족 여행 일정표를 만들어 줘. 이동 거리가 겹치지 않게 오전·오후·저녁 표로 정리하고, 비 올 때 갈 수 있는 실내 대안 장소와 준비물 체크리스트도 추가해 줘.`
+      },
+      book: {
+        badge: `📖 활용 ② · 연수·독서 서평 정리`,
+        title: `두꺼운 연수 자료집과 교육 도서를 3분 만에 내 것으로!`,
+        desc: `연수 PDF나 읽고 싶은 책 요약 자료를 넣고 우리 반에 적용할 점만 쏙 뽑아 연수 후기나 독서 서평을 완성해요.`,
+        label: `📋 연수·독서 서평 프롬프트`,
+        prompt: `업로드한 교육 서적(연수 자료)에서 저자의 핵심 주장 3가지를 쉽게 요약하고, 초등학교 교실 수업이나 학급 경영에 바로 적용할 수 있는 실천 아이디어 2가지를 포함해 따뜻한 독서 서평 초안을 써 줘.`
+      },
+      health: {
+        badge: `🩺 활용 ③ · 건강검진 맞춤 분석`,
+        title: `어려운 의학 용어 가득한 검진표 PDF를 한눈에 쏙!`,
+        desc: `올해와 작년 건강검진 결과지 PDF를 함께 올려 비교해 보세요. 주의할 수치와 교사 생활 패턴에 맞는 건강 습관을 알려줘요. (참고용으로만 활용하세요!)`,
+        label: `📋 건강검진 분석 프롬프트`,
+        prompt: `첨부한 올해와 작년 건강검진 결과표를 비교해 변화된 수치를 표로 정리하고, 정상 범위를 벗어난 항목의 쉬운 설명과 학교에서 실천할 수 있는 식습관·스트레칭 루틴을 추천해 줘.`
+      }
+    };
+
+    function buildDots() {
+      const track = document.getElementById('dot-track');
+      if (!track) return;
+      let html = ``;
+      for (let i = 0; i < TOTAL_SLIDES; i++) {
+        const cls = i === currentSlide ? `slide-dot active` : `slide-dot`;
+        html += `<button type="button" class="${cls}" onclick="goToSlide(${i})" aria-label="슬라이드 ${i + 1}로 이동"></button>`;
+      }
+      track.innerHTML = html;
+    }
+
+    function updateSlideUI() {
+      const cards = document.querySelectorAll('.slide-card');
+      cards.forEach((card, idx) => {
+        if (idx === currentSlide) {
+          card.classList.add('active');
+        } else {
+          card.classList.remove('active');
+        }
+      });
+
+      const badge = document.getElementById('slide-counter-badge');
+      if (badge) {
+        const numStr = String(currentSlide + 1).padStart(2, '0');
+        badge.textContent = `슬라이드 ${numStr} / ${TOTAL_SLIDES}`;
+      }
+
+      const progress = document.getElementById('deck-progress-fill');
+      if (progress) {
+        const pct = ((currentSlide + 1) / TOTAL_SLIDES) * 100;
+        progress.style.width = `${pct}%`;
+      }
+
+      const prevBtn = document.getElementById('btn-prev');
+      const nextBtn = document.getElementById('btn-next');
+      if (prevBtn) prevBtn.disabled = currentSlide === 0;
+      if (nextBtn) nextBtn.disabled = currentSlide === TOTAL_SLIDES - 1;
+
+      const dots = document.querySelectorAll('.slide-dot');
+      dots.forEach((d, idx) => {
+        if (idx === currentSlide) d.classList.add('active');
+        else d.classList.remove('active');
+      });
+
+      // Highlight active chapter chip
+      const chapters = document.querySelectorAll('.chapter-chip');
+      let activeChapterIdx = 0;
+      if (currentSlide >= 8) activeChapterIdx = 4;
+      else if (currentSlide >= 7) activeChapterIdx = 3;
+      else if (currentSlide >= 4) activeChapterIdx = 2;
+      else if (currentSlide >= 2) activeChapterIdx = 1;
+      chapters.forEach((ch, idx) => {
+        if (idx === activeChapterIdx) ch.classList.add('active');
+        else ch.classList.remove('active');
+      });
+    }
+
+    function goToSlide(idx) {
+      if (idx < 0 || idx >= TOTAL_SLIDES) return;
+      currentSlide = idx;
+      if (isOverview) {
+        const target = document.querySelector(`.slide-card[data-slide="${idx}"]`);
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      updateSlideUI();
+      persistAppState();
+    }
+
+    function prevSlide() {
+      goToSlide(currentSlide - 1);
+    }
+
+    function nextSlide() {
+      goToSlide(currentSlide + 1);
+    }
+
+    function toggleOverviewMode() {
+      isOverview = !isOverview;
+      const shell = document.getElementById('deck-shell');
+      const btn = document.getElementById('btn-toggle-view');
+      if (shell) {
+        shell.classList.toggle('overview-mode', isOverview);
+      }
+      if (btn) {
+        btn.textContent = isOverview ? `🖥️ 16:9 발표 모드` : `📋 전체 한눈에 보기`;
+      }
+    }
+
+    function showCitation(num) {
+      const box = document.getElementById('citation-preview');
+      if (!box) return;
+      if (num === 1) {
+        box.innerHTML = `<strong style="color: var(--on-tertiary-container);">📖 출처 [1] 원문 확인:</strong> <span style="color: var(--on-surface);">6-2 과학 교과서 18쪽 — "물은 전기가 잘 통하므로 젖은 손으로 전기 기구를 만지면 감전 위험이 있습니다."</span>`;
+      } else {
+        box.innerHTML = `<strong style="color: var(--on-tertiary-container);">📖 출처 [2] 원문 확인:</strong> <span style="color: var(--on-surface);">안전 지도안 4쪽 — "한 콘센트에 여러 플러그를 문어발식으로 꽂으면 과열로 인한 화재가 발생할 수 있습니다."</span>`;
+      }
+    }
+
+    function selectStudioTab(key, btnEl) {
+      const parent = btnEl ? btnEl.closest('.slide-body') : null;
+      if (parent) {
+        parent.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      }
+      if (btnEl) btnEl.classList.add('active');
+      const panel = document.getElementById('studio-panel');
+      if (panel && STUDIO_TABS[key]) {
+        panel.innerHTML = STUDIO_TABS[key];
+      }
+    }
+
+    function selectLifeTab(key, btnEl) {
+      const parent = btnEl ? btnEl.closest('.slide-body') : null;
+      if (parent) {
+        parent.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      }
+      if (btnEl) btnEl.classList.add('active');
+      const data = LIFE_TABS[key];
+      const panel = document.getElementById('life-panel');
+      if (!data || !panel) return;
+      const safePrompt = data.prompt.replace(/`/g, `'`);
+      panel.innerHTML = `
+        <div class="grid-2-asym">
+          <div style="display: flex; flex-direction: column; gap: var(--space-sm);">
+            <span class="pill-badge pill-coral" style="width: fit-content;">${data.badge}</span>
+            <h3 class="card-title">${data.title}</h3>
+            <p class="card-desc">${data.desc}</p>
+          </div>
+          <div class="prompt-box">
+            <div class="prompt-top">
+              <span class="prompt-label">${data.label}</span>
+              <button type="button" class="btn btn-primary" onclick="copyTextValue(\`${safePrompt}\`, this)">📋 복사하기</button>
+            </div>
+            <p class="prompt-text">${data.prompt}</p>
+          </div>
+        </div>
+      `;
+    }
+
+    function copyTextValue(text, btnEl) {
+      if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+        navigator.clipboard.writeText(text).then(() => {
+          showCopySuccess(btnEl);
+        }).catch(() => {
+          fallbackCopyText(text, btnEl);
+        });
+      } else {
+        fallbackCopyText(text, btnEl);
+      }
+    }
+
+    function fallbackCopyText(text, btnEl) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+      } catch (e) {
+        // Ignore copy restriction
+      }
+      document.body.removeChild(ta);
+      showCopySuccess(btnEl);
+    }
+
+    function copyPromptById(elId, btnEl) {
+      const target = document.getElementById(elId);
+      if (!target) return;
+      copyTextValue(target.textContent.trim(), btnEl);
+    }
+
+    function showCopySuccess(btnEl) {
+      if (btnEl) {
+        const orig = btnEl.dataset.origLabel || btnEl.textContent;
+        btnEl.dataset.origLabel = orig;
+        btnEl.textContent = `✅ 복사 완료!`;
+        btnEl.classList.add('btn-copied');
+        setTimeout(() => {
+          btnEl.textContent = orig;
+          btnEl.classList.remove('btn-copied');
+        }, 1800);
+      }
+      const toast = document.getElementById('copy-toast');
+      if (toast) {
+        toast.classList.add('show');
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 2000);
+      }
+    }
+
+    function renderDemoQuiz() {
+      const q = DEMO_QUESTIONS[demoQuestionIdx];
+      const titleEl = document.getElementById('demo-q-title');
+      const optsEl = document.getElementById('demo-options');
+      const fbEl = document.getElementById('demo-feedback');
+      const nextBtn = document.getElementById('btn-next-demo-q');
+      const scoreEl = document.getElementById('demo-score-badge');
+
+      if (!q || !titleEl || !optsEl || !fbEl) return;
+      titleEl.textContent = q.title;
+      let html = ``;
+      q.options.forEach((opt) => {
+        html += `<button type="button" class="quiz-opt" onclick="answerDemoQuiz(${demoQuestionIdx}, ${opt.correct}, this)">${opt.text}</button>`;
+      });
+      optsEl.innerHTML = html;
+      fbEl.textContent = `👆 보기를 직접 눌러보세요!`;
+      fbEl.style.color = `var(--on-surface-variant)`;
+      if (nextBtn) {
+        nextBtn.textContent = demoQuestionIdx === 0 ? `다음 문제 (5학년 사회) ▶` : `처음 문제 (6-2 과학) ↺`;
+      }
+      if (scoreEl) {
+        scoreEl.textContent = `점수: ${demoScore} / ${DEMO_QUESTIONS.length}`;
+      }
+    }
+
+    function answerDemoQuiz(qIdx, isCorrect, btnEl) {
+      const q = DEMO_QUESTIONS[qIdx];
+      const optsEl = document.getElementById('demo-options');
+      const fbEl = document.getElementById('demo-feedback');
+      const scoreEl = document.getElementById('demo-score-badge');
+      if (!q || !optsEl || !fbEl) return;
+
+      optsEl.querySelectorAll('.quiz-opt').forEach(b => b.classList.remove('correct', 'wrong'));
+      if (isCorrect) {
+        if (btnEl) btnEl.classList.add('correct');
+        fbEl.textContent = `🎉 ${q.explain}`;
+        fbEl.style.color = `var(--secondary)`;
+        if (!demoAnswered[qIdx]) {
+          demoAnswered[qIdx] = true;
+          demoScore += 1;
+        }
+      } else {
+        if (btnEl) btnEl.classList.add('wrong');
+        fbEl.textContent = `💡 아쉬워요! 다시 한 번 골라볼까요?`;
+        fbEl.style.color = `var(--primary)`;
+      }
+      if (scoreEl) {
+        scoreEl.textContent = `점수: ${demoScore} / ${DEMO_QUESTIONS.length}`;
+      }
+    }
+
+    function nextDemoQuiz() {
+      demoQuestionIdx = (demoQuestionIdx + 1) % DEMO_QUESTIONS.length;
+      renderDemoQuiz();
+    }
+
+    function filterPrompts(cat, btnEl) {
+      const parent = btnEl ? btnEl.closest('.slide-body') : null;
+      if (parent) {
+        parent.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      }
+      if (btnEl) btnEl.classList.add('active');
+
+      const grid = document.getElementById('prompt-treasure-grid');
+      if (!grid) return;
+      grid.querySelectorAll('.prompt-box').forEach(box => {
+        if (cat === 'all' || box.dataset.cat === cat) {
+          box.style.display = 'flex';
+        } else {
+          box.style.display = 'none';
+        }
+      });
+    }
+
+    function renderChecklist() {
+      const container = document.getElementById('checklist-items');
+      const progBadge = document.getElementById('checklist-progress');
+      if (!container) return;
+
+      const labels = [
+        `1. 구글 드라이브 실습 자료 주소 복사하기`,
+        `2. Google Notebook에 과학/사회 PDF 올리기`,
+        `3. 스튜디오에서 팟캐스트·퀴즈·인포그래픽 생성하기`,
+        `4. 칼퇴 일상 프롬프트 1개 복사해 보기`,
+        `5. Gemini Canvas → Google Sites 웹앱 배포 이해하기`
+      ];
+
+      let doneCount = 0;
+      container.querySelectorAll('.check-item').forEach((btn, idx) => {
+        const done = Boolean(checklistState[idx]);
+        if (done) doneCount += 1;
+        btn.classList.toggle('done', done);
+        btn.textContent = `${done ? '✅' : '⬜'} ${labels[idx]}`;
+      });
+
+      if (progBadge) {
+        progBadge.textContent = `${doneCount} / ${labels.length} 완료`;
+      }
+    }
+
+    function toggleChecklist(idx) {
+      checklistState[idx] = !checklistState[idx];
+      renderChecklist();
+      persistAppState();
+    }
+
+    async function persistAppState() {
+      if (window.notebookAppApi && typeof window.notebookAppApi.setAppState === 'function') {
+        try {
+          await window.notebookAppApi.setAppState({
+            currentSlide: currentSlide,
+            checklistState: checklistState
+          });
+        } catch (e) {
+          // Ignore state save errors in standalone browser mode
+        }
+      }
+    }
+
+    async function initApp() {
+      buildDots();
+
+      if (window.notebookAppApi && typeof window.notebookAppApi.getAppState === 'function') {
+        try {
+          const saved = await window.notebookAppApi.getAppState();
+          if (saved) {
+            if (typeof saved.currentSlide === 'number' && saved.currentSlide >= 0 && saved.currentSlide < TOTAL_SLIDES) {
+              currentSlide = saved.currentSlide;
+            }
+            if (Array.isArray(saved.checklistState) && saved.checklistState.length === 5) {
+              checklistState = saved.checklistState;
+            }
+          }
+        } catch (e) {
+          // Ignore state load errors
+        }
+      }
+
+      updateSlideUI();
+      renderChecklist();
+      renderDemoQuiz();
+
+      document.addEventListener('keydown', function (ev) {
+        if (ev.target && (ev.target.tagName === 'INPUT' || ev.target.tagName === 'TEXTAREA')) return;
+        if (ev.key === 'ArrowRight') {
+          nextSlide();
+        } else if (ev.key === 'ArrowLeft') {
+          prevSlide();
+        }
+      });
+
+      if (window.notebookAppApi && typeof window.notebookAppApi.notifyAppReady === 'function') {
+        window.notebookAppApi.notifyAppReady();
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', initApp);
+  </script>
+</body>
+</html>
